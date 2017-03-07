@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <link href="css/style.css" rel="stylesheet">
+  <title>MERINEAU - Mon Application</title>
+  <!--<script type="text/javascript" src="js/11_apps_mongodb.js"></script>-->
+</head>
+<body>
+  Node.js, Express et MongoDB.
+  <button id='update'>Mise à jour téléphone</button>
+    <form action="/adresse" method="POST">
+    <input type="text" placeholder="Prenom" name="prenom">
+    <input type="text" placeholder="Nom" name="nom">
+    <input type="text" placeholder="Telephone" name="telephone">
+    <input type="text" placeholder="Ville" name="ville">
+    <input type="text" placeholder="Code Postal" name="cp">
+    <input type="text" placeholder="Groupe Sanguin" name="gs">
+    <button type="submit">Soumettre</button>
+  </form>
+
+  <ul class="adresse">
+  <% for(var i=0; i<adresse.length; i++) {%>
+    <li class="client">
+      <form <%= "action=modifier/"+adresse[i]._id.toString() %> method="POST">
+        <input type="text" placeholder="Prenom" name="prenom" value="<%= adresse[i].prenom %>">
+        <input type="text" placeholder="Nom" name="nom" value="<%= adresse[i].nom %>">
+        <input type="text" placeholder="Telephone" name="telephone" value="<%= adresse[i].telephone %>">
+        <input type="text" placeholder="Ville" name="ville" value="<%= adresse[i].ville %>">
+        <input type="text" placeholder="Code Postal" name="cp" value="<%= adresse[i].cp %>">
+        <input type="text" placeholder="Groupe Sanguin" name="gs" value="<%= adresse[i].gs %>">
+        <a <%= "href=detruire/"+adresse[i]._id.toString() %>>X</a>
+        <button type="submit">WAT</button>
+      </form>
+    </li>
+  <% } %>
+  </ul>
+  
+
+</body>
+</html>
